@@ -30,7 +30,7 @@ jobs:
     - name: Check fmt/clippy/etc.
       run: python x.py test tidy
     - name: Build and run unit tests
-      run: python test
+      run: python x.py test
   
   macos:
     runs-on: macos-latest
