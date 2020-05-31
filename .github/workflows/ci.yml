@@ -20,7 +20,7 @@ jobs:
     - name: Build and run unit tests
       run: ./x.py test
   
-  windows:
+  windows-gnu:
     runs-on: windows-latest
 
     steps:
@@ -31,6 +31,18 @@ jobs:
       run: python x.py test tidy
     - name: Build and run unit tests
       run: python x.py test
+  
+  windows-msvc:
+    runs-on: windows-latest
+
+    steps:
+    - name: Disable LF to CRLF conversion
+      run: git config --global core.autocrlf false
+    - uses: actions/checkout@v2
+    - name: Check fmt/clippy/etc.
+      run: python x.py test tidy --build=x86_64-pc-windows-msvc
+    - name: Build and run unit tests
+      run: python x.py test --build=x86_64-pc-windows-msvc
   
   macos:
     runs-on: macos-latest
