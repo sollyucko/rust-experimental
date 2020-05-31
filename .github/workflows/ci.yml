@@ -19,8 +19,6 @@ jobs:
       run: ./x.py test tidy
     - name: Build and run unit tests
       run: ./x.py test
-    - name: Run UI tests
-      run: ./x.py test 
   
   windows:
     runs-on: windows-latest
@@ -28,11 +26,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Check fmt/clippy/etc.
-      run: ./x.py test tidy
+      run: python x.py test tidy
     - name: Build and run unit tests
-      run: ./x.py test
-    - name: Run UI tests
-      run: ./x.py test 
+      run: python test
   
   macos:
     runs-on: macos-latest
@@ -43,5 +39,3 @@ jobs:
       run: ./x.py test tidy
     - name: Build and run unit tests
       run: ./x.py test
-    - name: Run UI tests
-      run: ./x.py test 
