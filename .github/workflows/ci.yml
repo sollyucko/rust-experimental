@@ -24,9 +24,9 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v2
     - name: Disable LF to CRLF conversion
       run: git config --global core.autocrlf false
+    - uses: actions/checkout@v2
     - name: Check fmt/clippy/etc.
       run: python x.py test tidy
     - name: Build and run unit tests
