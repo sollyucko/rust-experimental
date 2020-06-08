@@ -2209,12 +2209,14 @@ impl FnRetTy {
 }
 
 /// Specifies whether the return type is passed by reference or value.
+#[derive(Clone, RustcEncodable, RustcDecodable, Debug)]
 pub struct FnRetMode {
     inner: FnRetModeInner,
     span: Span,
 }
 
 /// See [`FnRetMode`].
+#[derive(Clone, RustcEncodable, RustcDecodable, Debug)]
 pub enum FnRetModeInner {
     Default,
     Ref,
