@@ -2203,7 +2203,7 @@ impl FnRetTy {
     pub fn span(&self) -> Span {
         match *self {
             FnRetTy::Default(span) => span,
-            FnRetTy::Ty(ref ty) => ty.span,
+            FnRetTy::Ty(_, ref ty) => ty.span,
         }
     }
 }
