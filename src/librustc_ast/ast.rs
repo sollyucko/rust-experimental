@@ -2196,7 +2196,7 @@ pub enum FnRetTy {
     /// Span points to where return type would be inserted.
     Default(Span),
     /// Everything else.
-    Ty(P<Ty>),
+    Ty(FnRetMode, P<Ty>),
 }
 
 impl FnRetTy {
@@ -2206,6 +2206,19 @@ impl FnRetTy {
             FnRetTy::Ty(ref ty) => ty.span,
         }
     }
+}
+
+/// Specifies whether the return type is passed by reference or value.
+pub struct FnRetMode {
+    inner: FnRetModeInner,
+    span: Span,
+}
+
+/// See [`FnRetMode`].
+pub enum FnRetModeInner {
+    Default,
+    Ref,
+    Move,
 }
 
 /// Module declaration.

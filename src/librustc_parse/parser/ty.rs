@@ -91,7 +91,7 @@ impl<'a> Parser<'a> {
         Ok(if self.eat(&token::RArrow) {
             // FIXME(Centril): Can we unconditionally `allow_plus`?
             let ty = self.parse_ty_common(allow_plus, recover_qpath, AllowCVariadic::No)?;
-            FnRetTy::Ty(ty)
+            FnRetTy::Ty(self.prev_token.shrink_to_lo(), ty)
         } else {
             FnRetTy::Default(self.token.span.shrink_to_lo())
         })
